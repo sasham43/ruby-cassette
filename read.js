@@ -10,14 +10,14 @@ if(args[2] === '-v'){
   var cmd = 'ruby tape-read.rb';
 }
 
-var tape = cp.exec(cmd, function(err, stdout, stderr){
-  if(err)
-    return console.log('err:', err);
+var tape = cp.spawn(cmd);
 
-  console.log('stdout:', stdout);
-  console.log('stderr:', stderr);
+tape.stdout.on('data', (data) => {
+  console.log('data:', data);
 });
-
-// tape.stdout.on('data', (data) => {
-//   cp.exec('omxplayer ')
-// });
+tape.stderr.on('error', (error) => {
+  console.log('error:', error);
+});
+tape.stdout.on('end', () =>{
+  console.log('end.');
+});
