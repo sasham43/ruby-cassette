@@ -26,29 +26,42 @@ tape.stderr.on('error', function(error) {
   console.log('error:', error);
 });
 tape.stdout.on('end', function(){
-  playlist = JSON.parse(playlist).playlist;
-  console.log('end.', playlist);
-  console.log('end.', playlist[0]);
-
-  var youtube_dl = cp.exec('youtube-dl -g ' + playlist[0], function(err, url, stderr){
-    if(err){
-      console.log('err:', err);
-    } else {
-      // console.log('out:', url);
-      // replace line endings
-      url = url.replace(/\r?\n|\r/g, '');
-
-      var omx_cmd = 'omxplayer \'' + url + '\'';
-      console.log('omx_cmd:', omx_cmd);
-
-      var omxplayer = cp.exec(omx_cmd, function(err, stdout, stderr){
-        if(err){
-          console.log('err omx:', err);
-        } else {
-          console.log('stdout:', stdout);
-        }
-      });
-    }
+  videos = JSON.parse(playlist).playlist;
+  // console.log('end.', playlist);
+  // console.log('end.', playlist[0]);
+  playlist = [];
+  console.log('loading playlist urls...');
+  videos.map(function(video){
+    var url = cp.execSync('youtube-dl -g ' + video);
+    playlist.push(url);
   });
+
+  playlist.map(function(video, index){
+    console.log('playing', index + '...');
+    video = video.replace(/\r?\n|\r/g, ''); // remove line endings
+    video_cmd = 'omxplayer \'' + video + '\'';
+    cp.execSync(video_cmd);
+  })
+
+  // var youtube_dl = cp.exec('youtube-dl -g ' + playlist[0], function(err, url, stderr){
+  //   if(err){
+  //     console.log('err:', err);
+  //   } else {
+  //     // console.log('out:', url);
+  //     // replace line endings
+  //     url = url.replace(/\r?\n|\r/g, '');
+  //
+  //     var omx_cmd = 'omxplayer \'' + url + '\'';
+  //     console.log('omx_cmd:', omx_cmd);
+  //
+  //     var omxplayer = cp.exec(omx_cmd, function(err, stdout, stderr){
+  //       if(err){
+  //         console.log('err omx:', err);
+  //       } else {
+  //         console.log('stdout:', stdout);
+  //       }
+  //     });
+  //   }
+  // });
 
 });
