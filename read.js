@@ -30,11 +30,19 @@ tape.stdout.on('end', function(){
   console.log('end.', playlist);
   console.log('end.', playlist[0]);
 
-  var youtube_dl = cp.exec('youtube-dl -g ' + playlist[0], function(err, stdout, stderr){
+  var youtube_dl = cp.exec('youtube-dl -g ' + playlist[0], function(err, url, stderr){
     if(err){
       console.log('err:', err);
     } else {
-      console.log('out:', stdout);
+      console.log('out:', url);
+
+      var omxplayer = cp.exec('omxplayer ' + url, function(err, stdout, stderr){
+        if(err){
+          console.log('err:', err);
+        } else {
+          console.log('stdout:', stdout);
+        }
+      });
     }
   });
 
