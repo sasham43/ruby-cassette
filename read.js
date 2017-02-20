@@ -16,13 +16,15 @@ var r_args = [
 ];
 
 var tape = cp.spawn(cmd, r_args);
+var response = '';
 
 tape.stdout.on('data', function(data) {
-  console.log('data:', data.toString());
+  // console.log('data:', data.toString());
+  response += data.toString();
 });
 tape.stderr.on('error', function(error) {
   console.log('error:', error);
 });
 tape.stdout.on('end', function(){
-  console.log('end.');
+  console.log('end.', response);
 });
