@@ -7,7 +7,7 @@ console.log('args:', args);
 if(args[2] === '-v'){
   var cmd = 'ruby tape-read.rb | omxplayer pipe:0';
 } else if (args[2] === '-y'){
-  var cmd = 'ruby tape-read.rb > playlist.txt';
+  var cmd = 'ruby tape-read.rb';
 }
 
 var tape = cp.exec(cmd, function(err, stdout, stderr){
