@@ -36,7 +36,7 @@ tape.stdout.on('end', function(){
     } else {
       console.log('out:', url);
 
-      var omxplayer = cp.exec('omxplayer ' + url, function(err, stdout, stderr){
+      var omxplayer = cp.exec('omxplayer \'' + url + '\'', function(err, stdout, stderr){
         if(err){
           console.log('err:', err);
         } else {
