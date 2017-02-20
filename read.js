@@ -16,15 +16,26 @@ var r_args = [
 ];
 
 var tape = cp.spawn(cmd, r_args);
-var response = '';
+var playlist = '';
 
 tape.stdout.on('data', function(data) {
   // console.log('data:', data.toString());
-  response += data.toString();
+  playlist += data.toString();
 });
 tape.stderr.on('error', function(error) {
   console.log('error:', error);
 });
 tape.stdout.on('end', function(){
-  console.log('end.', response);
+  playlist = JSON.loads(playlist);
+  console.log('end.', playlist);
+  console.log('end.', playlist[0]);
+
+  var youtube_dl = cp.exec('youtube_dl' ['-g', playlist[0]], function(err, stdout, stderr){
+    if(err){
+      console.log('err:', err);
+    } else {
+      console.log('out:', stdout);
+    }
+  });
+
 });
