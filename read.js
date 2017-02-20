@@ -26,7 +26,7 @@ tape.stderr.on('error', function(error) {
   console.log('error:', error);
 });
 tape.stdout.on('end', function(){
-  playlist = JSON.parse(playlist);
+  playlist = JSON.parse(playlist).playlist;
   console.log('end.', playlist);
   console.log('end.', playlist[0]);
 
