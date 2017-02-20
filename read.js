@@ -35,9 +35,11 @@ tape.stdout.on('end', function(){
       console.log('err:', err);
     } else {
       // console.log('out:', url);
+      // replace line endings
+      url = url.replace(/\r?\n|\r/g, '');
 
       var omx_cmd = 'omxplayer \'' + url + '\'';
-      console.log('omx_cmd:', omx_cmd.charAt(omx_cmd.length));
+      console.log('omx_cmd:', omx_cmd);
 
       var omxplayer = cp.exec(omx_cmd, function(err, stdout, stderr){
         if(err){
