@@ -34,11 +34,14 @@ tape.stdout.on('end', function(){
     if(err){
       console.log('err:', err);
     } else {
-      console.log('out:', url);
+      // console.log('out:', url);
 
-      var omxplayer = cp.exec('omxplayer \'' + url + '\'', function(err, stdout, stderr){
+      var omx_cmd = 'omxplayer \'' + url + '\'';
+      console.log('omx_cmd:', omx_cmd);
+
+      var omxplayer = cp.exec(omx_cmd, function(err, stdout, stderr){
         if(err){
-          console.log('err:', err);
+          console.log('err omx:', err);
         } else {
           console.log('stdout:', stdout);
         }
