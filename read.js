@@ -30,7 +30,7 @@ tape.stdout.on('end', function(){
   console.log('end.', playlist);
   console.log('end.', playlist[0]);
 
-  var youtube_dl = cp.exec('youtube_dl' ['-g', playlist[0]], function(err, stdout, stderr){
+  var youtube_dl = cp.exec('youtube_dl', ['-g', playlist[0]], function(err, stdout, stderr){
     if(err){
       console.log('err:', err);
     } else {
