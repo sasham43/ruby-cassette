@@ -37,7 +37,7 @@ tape.stdout.on('end', function(){
       // console.log('out:', url);
 
       var omx_cmd = 'omxplayer \'' + url + '\'';
-      console.log('omx_cmd:', omx_cmd.charCodeAt(omx_cmd.length));
+      console.log('omx_cmd:', omx_cmd.charAt(omx_cmd.length));
 
       var omxplayer = cp.exec(omx_cmd, function(err, stdout, stderr){
         if(err){
