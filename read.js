@@ -4,13 +4,18 @@ var args = process.argv;
 
 console.log('args:', args);
 
-if(args[2] === '-v'){
-  var cmd = 'ruby tape-read.rb | omxplayer pipe:0';
-} else if (args[2] === '-y'){
-  var cmd = 'ruby tape-read.rb';
-}
+// if(args[2] === '-v'){
+//   var cmd = 'ruby tape-read.rb | omxplayer pipe:0';
+// } else if (args[2] === '-y'){
+//   var cmd = 'ruby tape-read.rb';
+// }
 
-var tape = cp.spawn(cmd);
+var cmd = 'ruby';
+var r_args = [
+  'tape-read.rb'
+];
+
+var tape = cp.spawn(cmd, r_args);
 
 tape.stdout.on('data', function(data) {
   console.log('data:', data);
