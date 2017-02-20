@@ -12,12 +12,12 @@ if(args[2] === '-v'){
 
 var tape = cp.spawn(cmd);
 
-tape.stdout.on('data', (data) => {
+tape.stdout.on('data', function(data) {
   console.log('data:', data);
 });
-tape.stderr.on('error', (error) => {
+tape.stderr.on('error', function(error) {
   console.log('error:', error);
 });
-tape.stdout.on('end', () =>{
+tape.stdout.on('end', function(){
   console.log('end.');
 });
