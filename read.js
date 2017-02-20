@@ -18,7 +18,7 @@ var r_args = [
 var tape = cp.spawn(cmd, r_args);
 
 tape.stdout.on('data', function(data) {
-  console.log('data:', data);
+  console.log('data:', data.toString());
 });
 tape.stderr.on('error', function(error) {
   console.log('error:', error);
