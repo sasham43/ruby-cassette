@@ -39,7 +39,7 @@ tape.stdout.on('end', function(){
   playlist.map(function(video, index){
     console.log('video type:', video);
     console.log('playing', index + '...');
-    video = video.replace(/\r?\n|\r/g, ''); // remove line endings
+    video = video.toString().replace(/\r?\n|\r/g, ''); // remove line endings
     video_cmd = 'omxplayer \'' + video + '\'';
     cp.execSync(video_cmd);
   })
