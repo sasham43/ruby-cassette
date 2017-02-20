@@ -37,7 +37,7 @@ tape.stdout.on('end', function(){
   });
 
   playlist.map(function(video, index){
-    console.log('video type:', typeof video);
+    console.log('video type:', video);
     console.log('playing', index + '...');
     video = video.replace(/\r?\n|\r/g, ''); // remove line endings
     video_cmd = 'omxplayer \'' + video + '\'';
