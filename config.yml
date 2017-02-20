@@ -1,0 +1,13 @@
+# The output stream can be anything SoX
+# understands - a file name or a device
+#
+# device: output.wav
+# device: -t coreaudio default
+# device: -t alsa hw:1
+device: output.wav
+
+# PCM samples per bit
+bitlen: 8
+
+# square wave amplitude (0-1)
+volume: 0.10
