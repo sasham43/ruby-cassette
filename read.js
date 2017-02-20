@@ -1,6 +1,6 @@
 var cp = require('child_process');
 
-cp.exec('./tape-read.rb', function(err, stdout, stderr){
+cp.exec('ruby tape-read.rb', function(err, stdout, stderr){
   if(err)
     return console.log('err:', err);
 
