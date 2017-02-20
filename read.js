@@ -1,6 +1,16 @@
 var cp = require('child_process');
 
-var tape = cp.exec('ruby tape-read.rb | omxplayer pipe:0', function(err, stdout, stderr){
+var args = process.argv;
+
+console.log('args:', args);
+
+if(args[2] === '-v'){
+  var cmd = 'ruby tape-read.rb | omxplayer pipe:0';
+} else if (args[2] === '-y'){
+  var cmd = 'ruby tape-read.rb > playlist.txt';
+}
+
+var tape = cp.exec(cmd, function(err, stdout, stderr){
   if(err)
     return console.log('err:', err);
 
