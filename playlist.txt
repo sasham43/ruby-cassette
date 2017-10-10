@@ -1,6 +1,12 @@
 {
   "playlist": [
+      "https://www.youtube.com/watch?v=rVeMiVU77wo",
+      "https://www.youtube.com/watch?v=MmZexg8sxyk",
       "https://www.youtube.com/watch?v=hi4pzKvuEQM",
-      "https://www.youtube.com/watch?v=cfOa1a8hYP8"
+      "https://www.youtube.com/watch?v=dX3k_QDnzHE",
+      "https://www.youtube.com/watch?v=R3LCMxd1CGs",
+      "https://www.youtube.com/watch?v=GeynVBZjls8",
+      "https://www.youtube.com/watch?v=TjKmQmsRlBk",
+      "https://www.youtube.com/watch?v=wcV1UpZAWAc"
   ]
 }
