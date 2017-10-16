@@ -2,13 +2,23 @@
 # understands - a file name or a device
 #
 # device: output.wav
-device: -t coreaudio default
+#<<<<<<< Updated upstream
+#device: -t coreaudio default
 # device: -t alsa hw:1
 # device: output.wav
 # device: output.aif
+#=======
+# device: -t coreaudio default
+device: -t alsa hw:1
+#device: output.wav
+#>>>>>>> Stashed changes
 
 # PCM samples per bit
 bitlen: 8
 
 # square wave amplitude (0-1)
-volume: 0.90
+#<<<<<<< Updated upstream
+#volume: 0.90
+#=======
+volume: 0.20
+#>>>>>>> Stashed changes
