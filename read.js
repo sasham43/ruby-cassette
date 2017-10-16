@@ -32,7 +32,11 @@ tape.stdout.on('end', function(){
     var quote_re = /\"/g;
     video = video.replace(quote_re, '')
 
-    var url = cp.execSync('youtube-dl -g ' + video);
+    try {
+      var url = cp.execSync('youtube-dl -g ' + video);
+    } catch (e){
+      console.log('failed to play',e)
+    }
     playlist.push(url);
   });
 
