@@ -37,7 +37,11 @@ tape.stdout.on('end', function(){
     } catch (e){
       console.log('failed to get url',e)
     }
-    playlist.push(url);
+    if(video.includes("https://www.youtube.com")){
+      playlist.push(url);      
+    } else {
+
+    }
   });
 
   playlist.map(function(video, index){
