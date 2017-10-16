@@ -38,12 +38,14 @@ tape.stdout.on('end', function(){
       console.log('failed to get url',e)
     }
     if(video.includes("https://www.youtube.com")){
-      console.log('type:', typeof url, url)
-      url = url.toString();
-      if(url.includes('\n')){
-        url = url.split('\n')[0]
-      }
-      playlist.push(url);
+      // console.log('type:', typeof url, url)
+      if(url){
+        url = url.toString();
+        if(url.includes('\n')){
+          url = url.split('\n')[0]
+        }
+        playlist.push(url);
+      }      
     } else {
 
     }
