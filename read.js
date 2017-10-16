@@ -35,7 +35,7 @@ tape.stdout.on('end', function(){
     try {
       var url = cp.execSync('youtube-dl -g ' + video);
     } catch (e){
-      console.log('failed to play',e)
+      console.log('failed to get url',e)
     }
     playlist.push(url);
   });
@@ -45,6 +45,10 @@ tape.stdout.on('end', function(){
     console.log('playing', index + '...');
     video = video.toString().replace(/\r?\n|\r/g, ''); // remove line endings
     video_cmd = 'omxplayer \'' + video + '\'';
-    cp.execSync(video_cmd);
+    try {
+      cp.execSync(video_cmd);
+    } catch(e){
+      console.log('failed to play video', e)
+    }
   });
 });
