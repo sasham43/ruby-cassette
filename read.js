@@ -39,6 +39,7 @@ tape.stdout.on('end', function(){
     }
     if(video.includes("https://www.youtube.com")){
       console.log('type:', typeof url, url)
+      url = url.toString();
       if(url.includes('\n')){
         url = url.split('\n')[0]
       }
