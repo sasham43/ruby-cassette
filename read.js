@@ -28,6 +28,10 @@ tape.stdout.on('end', function(){
   playlist = [];
   console.log('loading playlist urls...');
   videos.map(function(video){
+    // strip quotes
+    var quote_re = /\"/g;
+    video = video.replace(quote_re, '')
+
     var url = cp.execSync('youtube-dl -g ' + video);
     playlist.push(url);
   });
