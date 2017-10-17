@@ -15,11 +15,11 @@ var r_args = [
 var tape = cp.spawn(cmd, r_args);
 var playlist = '';
 
-tape.stdout.on('data', function(data){
+tape.stdout.on('data', function(data) {
   playlist += data.toString();
 });
-tape.stderr.on('error', function(e){
-  console.log('error:', e);
+tape.stderr.on('error', function(error) {
+  console.log('error:', error);
 });
 tape.stdout.on('end', function(){
   console.log(playlist);
