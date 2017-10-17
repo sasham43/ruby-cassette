@@ -81,7 +81,7 @@ tape.stdout.on('end', function(){
     });
 
   })
-  // .catch(function(err){
-  //   console.log('did an oopsie:', err);
-  // });
+  .catch(function(err){
+    console.log('did an oopsie:', err);
+  });
 })
