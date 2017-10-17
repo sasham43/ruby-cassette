@@ -41,9 +41,9 @@ tape.stdout.on('end', function(){
       // console.log('type:', typeof url, url)
       if(url){
         url = url.toString();
-        if(url.includes('\n')){
-          url = url.split('\n')[1]
-        }
+        // if(url.includes('\n')){
+        //   url = url.split('\n')[1]
+        // }
         playlist.push(url);
       }
     } else {
