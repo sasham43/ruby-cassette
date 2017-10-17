@@ -35,7 +35,7 @@ tape.stdout.on('end', function(){
     try {
       var url = cp.execSync('youtube-dl -g ' + video);
     } catch (e){
-      console.log('failed to get url',e)
+      console.log('failed to get url')
     }
     if(video.includes("https://www.youtube.com")){
       // console.log('type:', typeof url, url)
@@ -45,7 +45,7 @@ tape.stdout.on('end', function(){
           url = url.split('\n')[0]
         }
         playlist.push(url);
-      }      
+      }
     } else {
 
     }
@@ -59,7 +59,7 @@ tape.stdout.on('end', function(){
     try {
       cp.execSync(video_cmd);
     } catch(e){
-      console.log('failed to play video', e)
+      console.log('failed to play video')
     }
   });
 });
