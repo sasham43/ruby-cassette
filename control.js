@@ -32,7 +32,7 @@ tape.stdout.on('end', function(){
   videos.forEach(function(video){
     var quote_re = /\"/g;
     video = video.replace(quote_re, '');
-    console.log('video', video);
+    console.log('video', video.length);
 
     if(video.includes("https://www.youtube.com")){
       var get_url = 'youtube-dl -f mp4 -g ' + video;
