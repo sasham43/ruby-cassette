@@ -39,7 +39,7 @@ tape.stdout.on('end', function(){
     url_promises.push(url_promise);
     url_promises.push(title_promise);
 
-    q.all(url_promises).then(function(responses){
+    q.allSettled(url_promises).then(function(responses){
       var playlist = [];
       var choices = [];
 
