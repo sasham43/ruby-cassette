@@ -22,9 +22,6 @@ tape.stderr.on('error', function(error) {
 tape.stdout.on('end', function(){
   console.log(playlist)
   videos = playlist.split('\n');
-  // videos = JSON.parse(playlist).playlist;
-  // console.log('end.', playlist);
-  // console.log('end.', playlist[0]);
   playlist = [];
   console.log('loading playlist urls...');
   videos.map(function(video){
@@ -41,9 +38,6 @@ tape.stdout.on('end', function(){
       // console.log('type:', typeof url, url)
       if(url){
         url = url.toString();
-        // if(url.includes('\n')){
-        //   url = url.split('\n')[1]
-        // }
         playlist.push(url);
       }
     } else {
