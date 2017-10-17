@@ -46,7 +46,7 @@ tape.stdout.on('end', function(){
   });
 
   // build playlist, open inquirer, play video
-  q.allSettled(url_promises).done(function(responses){
+  q.allSettled(url_promises).spread(function(responses){
     console.log('responses', responses);
     var playlist = [];
     var choices = [];
