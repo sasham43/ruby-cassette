@@ -1,7 +1,4 @@
-var inquirer = require('inquirer');
 var cp = require('child_process');
-var _ = require('underscore');
-var q = require('q');
 
 var args = process.argv;
 
@@ -21,6 +18,9 @@ tape.stdout.on('data', function(data) {
 tape.stderr.on('error', function(error) {
   console.log('error:', error);
 });
+var _ = require('underscore');
+var q = require('q');
+var inquirer = require('inquirer');
 tape.stdout.on('end', function(){
   console.log(playlist);
 
