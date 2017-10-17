@@ -33,7 +33,7 @@ tape.stdout.on('end', function(){
     video = video.replace(quote_re, '')
 
     try {
-      var url = cp.execSync('youtube-dl -g ' + video);
+      var url = cp.execSync('youtube-dl -f mp4 -g ' + video);
     } catch (e){
       console.log('failed to get url')
     }
