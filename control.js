@@ -34,7 +34,7 @@ tape.stdout.on('end', function(){
     video = video.replace(quote_re, '');
     console.log('video', video.length);
 
-    if(video.includes("https://www.youtube.com")){
+    if((video.includes("https://www.youtube.com") && (video.length == 43))){
       var get_url = 'youtube-dl -f mp4 -g ' + video;
       var get_title = 'youtube-dl -e ' + video;
 
