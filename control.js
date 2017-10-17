@@ -17,7 +17,7 @@ var playlist = '';
 tape.stdout.on('data', function(data){
   playlist += data.toString();
 });
-tape.sterr.on('error', function(e){
+tape.stderr.on('error', function(e){
   console.log('error:', e);
 });
 tape.stdout.on('end', function(){
