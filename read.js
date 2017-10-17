@@ -42,7 +42,7 @@ tape.stdout.on('end', function(){
       if(url){
         url = url.toString();
         if(url.includes('\n')){
-          url = url.split('\n')[0]
+          url = url.split('\n')[1]
         }
         playlist.push(url);
       }
