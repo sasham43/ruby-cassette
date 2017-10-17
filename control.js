@@ -1,6 +1,7 @@
 var inquirer = require('inquirer');
 var cp = require('child_process');
 var _ = require('underscore');
+var q = require('q');
 
 var args = process.argv;
 
