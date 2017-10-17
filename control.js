@@ -80,7 +80,8 @@ tape.stdout.on('end', function(){
       console.log('failed at erroring:', err);
     });
 
-  }).catch(function(err){
-    console.log('did an oopsie:', err);
-  });
+  })
+  // .catch(function(err){
+  //   console.log('did an oopsie:', err);
+  // });
 })
