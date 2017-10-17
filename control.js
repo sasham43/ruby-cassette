@@ -36,7 +36,8 @@ tape.stdout.on('end', function(){
 
     var url_promise = q.ninvoke(cp, 'execSync', get_url);
     var title_promise = q.ninvoke(cp, 'execSync', get_title);
-    url_promises.push(promise);
+    url_promises.push(url_promise);
+    url_promises.push(title_promise);
 
     q.all(url_promises).then(function(responses){
       var playlist = [];
