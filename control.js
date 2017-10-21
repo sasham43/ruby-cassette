@@ -82,7 +82,7 @@ function listen(){
             console.log('failed at erroring:', err);
           });
 
-        }
+        // }
     } else {
       listen()
     }
