@@ -82,12 +82,12 @@ function listen(){
             console.log('failed at erroring:', err);
           });
 
-        })
-        .catch(function(err){
-          console.log('did an oopsie:', err);
-        });
+        }
     } else {
       listen()
     }
   })
+  .catch(function(err){
+    console.log('did an oopsie:', err);
+  });
 }
