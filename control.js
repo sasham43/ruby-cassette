@@ -54,12 +54,12 @@ tape.stdout.on('end', function(){
     var item = {};
     responses.forEach(function(r, i){
       if(i == 0 || item % 2 == 0){
-        item.url = r;
-        choices.push(r);
-      }else {
         item.title = r;
         playlist.push(item);
         item = {};
+      } else {
+        item.url = r;
+        choices.push(r);
       }
     });
 
