@@ -51,7 +51,7 @@ function listen(){
       // build playlist, open inquirer, play video
       q.allSettled(url_promises).then(function(responses){
 
-        if(response.length > 0){
+        if(responses.length > 0){
           var playlist = [];
           var choices = [];
 
