@@ -9,6 +9,8 @@ var r_args = [
   'tape-read.rb'
 ];
 
+listen();
+
 function listen(){
   var tape = cp.spawn(cmd, r_args);
   var playlist = '';
