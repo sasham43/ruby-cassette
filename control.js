@@ -38,8 +38,8 @@ tape.stdout.on('end', function(){
       var get_url = 'youtube-dl -f mp4 -g ' + video;
       var get_title = 'youtube-dl -e ' + video;
 
-      var url_promise = q.ninvoke(cp, 'execSync', get_url);
-      var title_promise = q.ninvoke(cp, 'execSync', get_title);
+      var url_promise = q.ninvoke(cp, 'exec', get_url);
+      var title_promise = q.ninvoke(cp, 'exec', get_title);
       url_promises.push(url_promise);
       url_promises.push(title_promise);
     }
