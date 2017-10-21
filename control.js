@@ -2,8 +2,6 @@ var cp = require('child_process');
 
 var args = process.argv;
 
-console.log('listening...');
-
 var cmd = 'ruby';
 var r_args = [
   'tape-read.rb'
@@ -12,6 +10,7 @@ var r_args = [
 listen();
 
 function listen(){
+console.log('listening...');
   var tape = cp.spawn(cmd, r_args);
   var playlist = '';
 
