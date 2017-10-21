@@ -5,8 +5,8 @@ var cp = require('child_process');
 var get_url = 'youtube-dl -f mp4 -g https://www.youtube.com/watch?v=wcV1UpZAWAc';
 var get_title = 'youtube-dl -e https://www.youtube.com/watch?v=wcV1UpZAWAc';
 
-var url_promise = q.ninvoke(cp, 'execSync', get_url);
-var title_promise = q.ninvoke(cp, 'execSync', get_title);
+var url_promise = q.ninvoke(cp.execSync, get_url);
+var title_promise = q.ninvoke(cp.execSync, get_title);
 
 q.allSettled([
   url_promise,
