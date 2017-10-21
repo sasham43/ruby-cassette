@@ -48,44 +48,43 @@ function listen(){
 
     // build playlist, open inquirer, play video
     q.allSettled(url_promises).then(function(responses){
-      console.log('responses', responses);
-      if(responses.length > 0){
-          var playlist = [];
-          var choices = [];
 
-          var item = {};
-          responses.forEach(function(r, i){
-            if(i == 0 || item % 2 == 0){
-              item.title = r;
-              playlist.push(item);
-              item = {};
-            } else {
-              item.url = r;
-              choices.push(r);
-            }
+      if(response.length > 0){
+        var playlist = [];
+        var choices = [];
+
+        var item = {};
+
+        responses.forEach(function(r,i){
+          if(i == 0 || item % 2 == 0){
+            item.title = r;
+            playlist.push(item);
+            item = {};
+          } else {
+            item.url = r;
+            choices.push(r);
+          }
+        });
+
+        inquirer.prompt({
+          type: 'list',
+          name: 'song',
+          message: 'play a video',
+          choices: choices
+        }).then(function(answers){
+          console.log('answers:', answers);
+
+          var song = _.find(playlist, function(p){
+            return p.title == answers.song;
           });
 
-          inquirer.prompt({
-            type: 'list',
-            name: 'song',
-            message: 'play a video',
-            choices: choices
-          }).then(function(answers){
-            console.log('answers:', answers);
-
-            var song = _.find(playlist, function(p){
-              return p.title == answers.song;
-            });
-
-            cp.exec('omxplayer \'' + song.url + '\'');
-          }).catch(function(err){
-            console.log('failed at erroring:', err);
-          });
-
-        // }
-    } else {
-      listen()
-    }
+          cp.exec('omxplayer \'' + song.url + '\'');
+        }).catch(function(err){
+          console.log('failed at erroring:', err);
+        });
+      } else {
+        listen();
+      }
   })
   .catch(function(err){
     console.log('did an oopsie:', err);
