@@ -72,7 +72,7 @@ tape.stdout.on('end', function(){
       console.log('answers:', answers);
 
       var song = _.find(playlist, function(p){
-        return p.title = answers.song;
+        return p.title == answers.song;
       });
 
       cp.exec('omxplayer \'' + song.url + '\'');
