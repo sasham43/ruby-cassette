@@ -34,6 +34,7 @@ console.log('listening...');
       videos.forEach(function(video){
         var quote_re = /\"/g;
         video = video.replace(quote_re, '');
+        video = video.toString().replace(/\r?\n|\r/g, ''); // remove line endings
         console.log('video', video.length);
 
         if((video.includes("https://www.youtube.com") && (video.length == 43))){
@@ -64,6 +65,7 @@ console.log('listening...');
             } else {
               item.url = r;
               choices.push(r);
+              item = {};
             }
           });
 
