@@ -24,7 +24,7 @@ console.log('listening...');
   var q = require('q');
   var inquirer = require('inquirer');
   tape.stdout.on('end', function(){
-      console.log(playlist);
+      console.log('playlist',playlist);
 
       videos = playlist.split('\n');
       console.log('loading urls...');
