@@ -38,13 +38,16 @@ console.log('listening...');
         console.log('video', video.length);
 
         if((video.includes("https://www.youtube.com") && (video.length == 43))){
-          var get_url = 'youtube-dl -f mp4 -g ' + video;
-          var get_title = 'youtube-dl -e ' + video;
-
-          var url_promise = q.ninvoke(cp, 'exec', get_url);
-          var title_promise = q.ninvoke(cp, 'exec', get_title);
-          url_promises.push(url_promise);
-          url_promises.push(title_promise);
+          // var get_url = 'youtube-dl -f mp4 -g ' + video;
+          // var get_title = 'youtube-dl -e ' + video;
+          //
+          // var url_promise = q.ninvoke(cp, 'exec', get_url);
+          // var title_promise = q.ninvoke(cp, 'exec', get_title);
+          // url_promises.push(url_promise);
+          // url_promises.push(title_promise);
+          var request = 'youtube-dl -e -f mp4 -g ' + video;
+          var promise = q.ninvoke(cp, 'exec', request);
+          url_promises.push(promise);
         }
       });
 
@@ -59,18 +62,20 @@ console.log('listening...');
           var item = {};
 
           responses.forEach(function(r,i){
-            if(i == 0 || item % 2 == 0){
-              console.log('even', r)
-              var url = r.value[0].toString().replace(/\r?\n|\r/g, ''); // remove line endings
-              item.url = url;
-              choices.push(r);
-              item = {};
-            } else {
-              console.log('odd', r)
-              var title = r.value[0].toString().replace(/\r?\n|\r/g, ''); // remove line endings
-              item.title = title;
+            if(r.state == 'fulfilled'){
+              var item = {
+                title: '',
+                url: ''
+              };
+              r.value.forEach(function(value){
+                if(value.includes('http')){
+                  item.url = value.toString().replace(/\r?\n|\r/g, '');
+                } else if(value.length > 4){
+                  item.title = value.toString().replace(/\r?\n|\r/g, '');
+                  choices.push(value.toString().replace(/\r?\n|\r/g, ''));
+                }
+              });
               playlist.push(item);
-              item = {};
             }
           });
 
