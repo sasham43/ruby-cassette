@@ -61,13 +61,15 @@ console.log('listening...');
           responses.forEach(function(r,i){
             if(i == 0 || item % 2 == 0){
               console.log('even', r)
-              item.title = r.value[0];
-              playlist.push(item);
+              var url = r.value[0].toString().replace(/\r?\n|\r/g, ''); // remove line endings
+              item.url = url;
+              choices.push(r);
               item = {};
             } else {
               console.log('odd', r)
-              item.url = r.value[0];
-              choices.push(r);
+              var title = r.value[0].toString().replace(/\r?\n|\r/g, ''); // remove line endings
+              item.title = title;
+              playlist.push(item);
               item = {};
             }
           });
