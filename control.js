@@ -60,11 +60,13 @@ console.log('listening...');
 
           responses.forEach(function(r,i){
             if(i == 0 || item % 2 == 0){
-              item.title = r;
+              console.log('even', r)
+              item.title = r.value[0];
               playlist.push(item);
               item = {};
             } else {
-              item.url = r;
+              console.log('odd', r)
+              item.url = r.value[0];
               choices.push(r);
               item = {};
             }
