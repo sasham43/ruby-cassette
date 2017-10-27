@@ -67,13 +67,18 @@ console.log('listening...');
                 title: '',
                 url: ''
               };
-              var values = r.value.split('\n')
-              values.forEach(function(value){
-                if(value.includes('http')){
-                  item.url = value.toString().replace(/\r?\n|\r/g, '');
-                } else if(value.length > 4){
-                  item.title = value.toString().replace(/\r?\n|\r/g, '');
-                  choices.push(value.toString().replace(/\r?\n|\r/g, ''));
+              // var values = r.value.split('\n');
+              r.value.forEach(function(v){
+                if(v != ''){
+                  var values = v.split('\n');
+                  values.forEach(function(value){
+                    if(value.includes('http')){
+                      item.url = value.toString().replace(/\r?\n|\r/g, '');
+                    } else if(value.length > 4){
+                      item.title = value.toString().replace(/\r?\n|\r/g, '');
+                      choices.push(value.toString().replace(/\r?\n|\r/g, ''));
+                    }
+                  });
                 }
               });
               playlist.push(item);
