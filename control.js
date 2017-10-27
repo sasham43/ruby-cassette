@@ -52,6 +52,7 @@ console.log('listening...');
       q.allSettled(url_promises).then(function(responses){
 
         if(responses.length > 0){
+          console.log('responses:', responses);
           var playlist = [];
           var choices = [];
 
@@ -68,6 +69,9 @@ console.log('listening...');
               item = {};
             }
           });
+
+          console.log('choices:', choices);
+          console.log('playlist:', playlist);
 
           inquirer.prompt({
             type: 'list',
