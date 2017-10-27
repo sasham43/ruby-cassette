@@ -38,13 +38,6 @@ console.log('listening...');
         console.log('video', video.length);
 
         if((video.includes("https://www.youtube.com") && (video.length == 43))){
-          // var get_url = 'youtube-dl -f mp4 -g ' + video;
-          // var get_title = 'youtube-dl -e ' + video;
-          //
-          // var url_promise = q.ninvoke(cp, 'exec', get_url);
-          // var title_promise = q.ninvoke(cp, 'exec', get_title);
-          // url_promises.push(url_promise);
-          // url_promises.push(title_promise);
           var request = 'youtube-dl -e -f mp4 -g ' + video;
           var promise = q.ninvoke(cp, 'exec', request);
           url_promises.push(promise);
@@ -88,22 +81,30 @@ console.log('listening...');
           console.log('choices:', choices);
           console.log('playlist:', playlist);
 
-          inquirer.prompt({
-            type: 'list',
-            name: 'song',
-            message: 'play a video',
-            choices: choices
-          }).then(function(answers){
-            console.log('answers:', answers);
+          function prompt_inquirer() {
+            inquirer.prompt({
+              type: 'list',
+              name: 'song',
+              message: 'play a video',
+              choices: choices
+            }).then(function(answers){
+              console.log('answers:', answers);
 
-            var song = _.find(playlist, function(p){
-              return p.title == answers.song;
+              var song = _.find(playlist, function(p){
+                return p.title == answers.song;
+              });
+
+              cp.exec('omxplayer \'' + song.url + '\'', function(err){
+                if(err){
+                  console.log('err:', err);
+                }
+
+                prompt_inquirer();
+              });
+            }).catch(function(err){
+              console.log('failed at erroring:', err);
             });
-
-            cp.exec('omxplayer \'' + song.url + '\'');
-          }).catch(function(err){
-            console.log('failed at erroring:', err);
-          });
+          }
         } else {
           listen();
         }
