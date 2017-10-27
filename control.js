@@ -67,7 +67,8 @@ console.log('listening...');
                 title: '',
                 url: ''
               };
-              r.value.forEach(function(value){
+              var values = r.value.split('\n')
+              values.forEach(function(value){
                 if(value.includes('http')){
                   item.url = value.toString().replace(/\r?\n|\r/g, '');
                 } else if(value.length > 4){
