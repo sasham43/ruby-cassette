@@ -81,6 +81,8 @@ console.log('listening...');
           console.log('choices:', choices);
           console.log('playlist:', playlist);
 
+          prompt_inquirer();
+
           function prompt_inquirer() {
             inquirer.prompt({
               type: 'list',
