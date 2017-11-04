@@ -38,7 +38,7 @@ console.log('listening...');
         console.log('video', video.length);
 
         if((video.includes("https://www.youtube.com") && (video.length == 43))){
-          var request = 'youtube-dl -e -f mp4 -g ' + video;
+          var request = 'youtube-dl -e -f \'worst[ext=mp4]\' -g ' + video;
           var promise = q.ninvoke(cp, 'exec', request);
           url_promises.push(promise);
         }
