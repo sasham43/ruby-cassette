@@ -48,7 +48,7 @@ console.log('listening...');
       q.allSettled(url_promises).then(function(responses){
 
         if(responses.length > 0){
-          console.log('responses:', responses);
+          // console.log('responses:', responses);
           var playlist = [];
           var choices = [];
 
@@ -78,8 +78,8 @@ console.log('listening...');
             }
           });
 
-          console.log('choices:', choices);
-          console.log('playlist:', playlist);
+          // console.log('choices:', choices);
+          // console.log('playlist:', playlist);
 
           prompt_inquirer();
 
@@ -90,7 +90,7 @@ console.log('listening...');
               message: 'play a video',
               choices: choices
             }).then(function(answers){
-              console.log('answers:', answers);
+              // console.log('answers:', answers);
 
               var song = _.find(playlist, function(p){
                 return p.title == answers.song;
